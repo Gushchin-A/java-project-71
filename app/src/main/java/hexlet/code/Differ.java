@@ -26,7 +26,8 @@ public final class Differ {
         final Path p = Path.of(path);
 
         if (!Files.exists(p)) {
-            throw new IllegalArgumentException("Файл не найден или путь не верный: " + path);
+            throw new IllegalArgumentException(
+                    "Файл не найден или путь не верный: " + path);
         }
 
         return Files.readString(p);
