@@ -1,11 +1,13 @@
 package hexlet.code;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeSet;
+
+import static hexlet.code.Parser.parsingJson;
+import static hexlet.code.Parser.parsingYml;
 
 /**
  * Класс с методами для генерации diff.
@@ -22,19 +24,12 @@ public final class Differ {
      */
     public static String readFile(final String path) throws Exception {
         final Path p = Path.of(path);
-        return Files.readString(p);
-    }
 
-    /** Парсинг JSON в Map.
-     *
-     * @param dataJson строка JSON
-     * @return отображение в формате ключ-значение
-     * @throws Exception если парсинг не удался
-     */
-    public static Map<String, Object> parsingJson(
-            final String dataJson) throws Exception {
-        ObjectMapper mapper = new ObjectMapper();
-        return mapper.readValue(dataJson, Map.class);
+        if (!Files.exists(p)) {
+            throw new IllegalArgumentException("Файл не найден или путь не верный: " + path);
+        }
+
+        return Files.readString(p);
     }
 
     /** Генерация diff.
@@ -46,11 +41,22 @@ public final class Differ {
      */
     public static String generate(
             final String p1, final String p2) throws Exception {
-        String json1 = readFile(p1);
-        String json2 = readFile(p2);
+        String file1 = readFile(p1);
+        String file2 = readFile(p2);
 
-        Map<String, Object> data1 = parsingJson(json1);
-        Map<String, Object> data2 = parsingJson(json2);
+        Map<String, Object> data1;
+        Map<String, Object> data2;
+        if (determineFileType(p1).equals("yml")
+                && determineFileType(p2).equals("yml")) {
+            data1 = parsingYml(file1);
+            data2 = parsingYml(file2);
+        } else if (determineFileType(p1).equals("json")
+                && determineFileType(p2).equals("json")) {
+            data1 = parsingJson(file1);
+            data2 = parsingJson(file2);
+        } else {
+            throw new IllegalArgumentException("Расширения файлов разные.");
+        }
 
         Set<String> keys = new TreeSet<>();
         keys.addAll(data1.keySet());
@@ -90,5 +96,25 @@ public final class Differ {
         result.append("}");
 
         return result.toString();
+    }
+
+    /** Проверка расширения файла.
+     *
+     * @param p путь до файла
+     * @return расширение файла
+     */
+    public static String determineFileType(final String p) {
+        int indexDot = p.lastIndexOf('.');
+        if (indexDot == -1) {
+            throw new IllegalArgumentException("Путь файл указан с ошибкой.");
+        }
+
+        String endFile = p.substring(indexDot).toLowerCase();
+        return switch (endFile) {
+            case ".json" -> "json";
+            case ".yml", ".yaml" -> "yml";
+            default -> throw new IllegalArgumentException(
+                    "Расширение не является YML, YAML, JSON.");
+        };
     }
 }
