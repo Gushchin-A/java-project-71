@@ -23,3 +23,7 @@ Diff Tool – a program that determines the difference between two data structur
 #### Demo check YML
 
 [![asciicast](https://asciinema.org/a/zGAe9uBs5jCAEWSRBKS3Xfz8A.svg)](https://asciinema.org/a/zGAe9uBs5jCAEWSRBKS3Xfz8A)
+
+#### Demo diff with "plain" formatter
+
+[![asciicast](https://asciinema.org/a/JUh4lfZCpgblUAz3aCNPQNLOR.svg)](https://asciinema.org/a/JUh4lfZCpgblUAz3aCNPQNLOR)

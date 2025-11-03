@@ -1,38 +1,23 @@
-package hexlet.code;
+package hexlet.code.formatters;
+
+import hexlet.code.DiffBuilder;
+import hexlet.code.DiffStructure;
 
 import java.util.List;
 
 /**
- * Класс для форматирования diff.
+ * Класс форматера "Stylish".
  */
-public final class Formatter {
-    /** Стиль форматирования "Stylish". */
-    public static final String STYLISH = "stylish";
+public final class Stylish {
 
-    private Formatter() { }
+    private Stylish() { }
 
-    /** Форматирование diff в строку по заданному стилю.
-     *
-     * @param diff список статусов изменений, новых и старых значений
-     * @param style формат вывода
-     * @return отформатированная строка в заданном формате
-     */
-    public static String format(
-            final List<DiffStructure> diff, final String style) {
-        return switch (style) {
-            case STYLISH -> formatStylish(diff);
-            default -> throw new IllegalArgumentException(
-                    "Неизвестный формат: " + style
-            );
-        };
-    }
-
-    /** Приватный метод форматирования "Stylish".
+    /** Метод форматирования "Stylish".
      *
      * @param diff список статусов изменений, новых и старых значений
      * @return отформатированная строка
      */
-    private static String formatStylish(final List<DiffStructure> diff) {
+    public static String formatStylish(final List<DiffStructure> diff) {
         String ln = System.lineSeparator();
         StringBuilder sb = new StringBuilder();
 
