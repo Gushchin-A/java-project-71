@@ -14,7 +14,7 @@ make run-dist  # run installed CLI version
 ### 📑 🔍 Gendiff
 Diff Tool – a program that determines the difference between two data structures.
 
-[![asciicast](https://asciinema.org/a/B1SLB9TtXm87XURxB1NmpArMB.svg)](https://asciinema.org/a/B1SLB9TtXm87XURxB1NmpArMB)
+[![asciicast](https://asciinema.org/a/IFlGPxVXxXAVm3nUaQNAkHLmw.svg)](https://asciinema.org/a/IFlGPxVXxXAVm3nUaQNAkHLmw)
 
 #### Demo compare files with nested keys
 
@@ -27,3 +27,7 @@ Diff Tool – a program that determines the difference between two data structur
 #### Demo diff with "plain" formatter
 
 [![asciicast](https://asciinema.org/a/JUh4lfZCpgblUAz3aCNPQNLOR.svg)](https://asciinema.org/a/JUh4lfZCpgblUAz3aCNPQNLOR)
+
+#### Demo diff with "json" formatter
+
+[![asciicast](https://asciinema.org/a/w8csNyfX0JP94xK37NopC4LkW.svg)](https://asciinema.org/a/w8csNyfX0JP94xK37NopC4LkW)

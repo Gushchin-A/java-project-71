@@ -2,6 +2,7 @@ package hexlet.code.formatters;
 
 import hexlet.code.DiffStructure;
 
+import static hexlet.code.formatters.Json.formatJson;
 import static hexlet.code.formatters.Plain.formatPlain;
 import static hexlet.code.formatters.Stylish.formatStylish;
 
@@ -15,6 +16,8 @@ public final class Formatter {
     public static final String STYLISH = "stylish";
     /** Стиль форматирования "Plain". */
     public static final String PLAIN = "plain";
+    /** Стиль форматирования "Json". */
+    public static final String JSON = "json";
 
     private Formatter() { }
 
@@ -26,9 +29,11 @@ public final class Formatter {
      */
     public static String format(
             final List<DiffStructure> diff, final String style) {
+
         return switch (style) {
             case STYLISH -> formatStylish(diff);
             case PLAIN -> formatPlain(diff);
+            case JSON -> formatJson(diff);
             default -> throw new IllegalArgumentException(
                     "Неизвестный формат: " + style
             );

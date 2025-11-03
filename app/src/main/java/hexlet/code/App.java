@@ -32,7 +32,7 @@ public final class App implements Callable<Integer> {
     @Option(
             names = {"-f", "--format"},
             paramLabel = "format",
-            description = "output format (stylish | plain)",
+            description = "Output format: stylish | plain | json",
             defaultValue = "stylish",
             showDefaultValue = Help.Visibility.ALWAYS
     )
