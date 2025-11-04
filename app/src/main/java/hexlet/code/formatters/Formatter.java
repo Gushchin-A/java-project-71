@@ -26,17 +26,18 @@ public final class Formatter {
      * @param diff список статусов изменений, новых и старых значений
      * @param style формат вывода
      * @return отформатированная строка в заданном формате
+     * @throws Exception если форматирование не удалось
      */
     public static String format(
-            final List<DiffStructure> diff, final String style) {
+            final List<DiffStructure> diff, final String style)
+            throws Exception {
 
         return switch (style) {
             case STYLISH -> formatStylish(diff);
             case PLAIN -> formatPlain(diff);
             case JSON -> formatJson(diff);
             default -> throw new IllegalArgumentException(
-                    "Неизвестный формат: " + style
-            );
+                    "Неизвестный формат: " + style);
         };
     }
 }

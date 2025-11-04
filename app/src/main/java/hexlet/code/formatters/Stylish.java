@@ -1,6 +1,5 @@
 package hexlet.code.formatters;
 
-import hexlet.code.DiffBuilder;
 import hexlet.code.DiffStructure;
 
 import java.util.List;
@@ -29,20 +28,20 @@ public final class Stylish {
             Object oldV = e.getOldValue();
             Object newV = e.getNewValue();
 
-            if (DiffBuilder.UNCHANGED.equals(status)) {
+            if (DiffStructure.UNCHANGED.equals(status)) {
                 sb.append("    ").append(key).append(": ")
-                        .append(String.valueOf(oldV)).append(ln);
-            } else if (DiffBuilder.REMOVED.equals(status)) {
+                        .append(oldV).append(ln);
+            } else if (DiffStructure.REMOVED.equals(status)) {
                 sb.append("  - ").append(key).append(": ")
-                        .append(String.valueOf(oldV)).append(ln);
-            } else if (DiffBuilder.ADDED.equals(status)) {
+                        .append(oldV).append(ln);
+            } else if (DiffStructure.ADDED.equals(status)) {
                 sb.append("  + ").append(key).append(": ")
-                        .append(String.valueOf(newV)).append(ln);
-            } else if (DiffBuilder.UPDATED.equals(status)) {
+                        .append(newV).append(ln);
+            } else if (DiffStructure.UPDATED.equals(status)) {
                 sb.append("  - ").append(key).append(": ")
-                        .append(String.valueOf(oldV)).append(ln);
+                        .append(oldV).append(ln);
                 sb.append("  + ").append(key).append(": ")
-                        .append(String.valueOf(newV)).append(ln);
+                        .append(newV).append(ln);
             }
         }
         sb.append("}");

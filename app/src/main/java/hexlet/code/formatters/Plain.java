@@ -1,6 +1,5 @@
 package hexlet.code.formatters;
 
-import hexlet.code.DiffBuilder;
 import hexlet.code.DiffStructure;
 
 import java.util.List;
@@ -28,16 +27,16 @@ public final class Plain {
             Object oldV = e.getOldValue();
             Object newV = e.getNewValue();
 
-            if (DiffBuilder.REMOVED.equals(status)) {
+            if (DiffStructure.REMOVED.equals(status)) {
                 sb.append("Property ").append(formatCheck(key))
                         .append(" was removed").append(ln);
-            } else if (DiffBuilder.UPDATED.equals(status)) {
+            } else if (DiffStructure.UPDATED.equals(status)) {
                 sb.append("Property ").append(formatCheck(key))
                         .append(" was updated.")
                         .append(" From ").append(formatCheck(oldV))
                         .append(" to ").append(formatCheck(newV))
                         .append(ln);
-            } else if (DiffBuilder.ADDED.equals(status)) {
+            } else if (DiffStructure.ADDED.equals(status)) {
                 sb.append("Property ").append(formatCheck(key))
                         .append(" was added with value: ")
                         .append(formatCheck(newV)).append(ln);

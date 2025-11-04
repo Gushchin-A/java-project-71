@@ -7,9 +7,6 @@ import java.nio.file.Path;
 import java.util.List;
 import java.util.Map;
 
-import static hexlet.code.Parser.parsingJson;
-import static hexlet.code.Parser.parsingYml;
-
 /**
  * Класс с методами для генерации diff.
  */
@@ -44,19 +41,14 @@ public final class Differ {
         String file1 = readFile(p1);
         String file2 = readFile(p2);
 
-        Map<String, Object> data1;
-        Map<String, Object> data2;
-        if (determineFileType(p1).equals("yml")
-                && determineFileType(p2).equals("yml")) {
-            data1 = parsingYml(file1);
-            data2 = parsingYml(file2);
-        } else if (determineFileType(p1).equals("json")
-                && determineFileType(p2).equals("json")) {
-            data1 = parsingJson(file1);
-            data2 = parsingJson(file2);
-        } else {
+        String type1 = determineFileType(p1);
+        String type2 = determineFileType(p2);
+        if (!type1.equals(type2)) {
             throw new IllegalArgumentException("Расширения файлов разные.");
         }
+
+        Map<String, Object> data1 = Parser.chooseParser(file1, type1);
+        Map<String, Object> data2 = Parser.chooseParser(file2, type2);
 
         List<DiffStructure> diff = DiffBuilder.build(data1, data2);
 
@@ -91,12 +83,6 @@ public final class Differ {
                     "Путь к файлу указан с ошибкой.");
         }
 
-        String endFile = p.substring(indexDot).toLowerCase();
-        return switch (endFile) {
-            case ".json" -> "json";
-            case ".yml", ".yaml" -> "yml";
-            default -> throw new IllegalArgumentException(
-                    "Расширение не является YML, YAML, JSON.");
-        };
+        return p.substring(indexDot + 1).toLowerCase();
     }
 }

@@ -6,68 +6,99 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class DifferTest {
+    /** Путь к файлу №1 json. */
+    private static final String JSON_FILE_1 =
+            "src/test/resources/fixtures/file1.json";
+    /** Путь к файлу №2 json. */
+    private static final String JSON_FILE_2 =
+            "src/test/resources/fixtures/file2.json";
+    /** Путь к файлу №1 yml. */
+    private static final String YML_FILE_1 =
+            "src/test/resources/fixtures/file1.yml";
+    /** Путь к файлу №2 yml. */
+    private static final String YML_FILE_2 =
+            "src/test/resources/fixtures/file2.yml";
 
-    @DisplayName("Вывод сравнения JSON файлов")
+    /** Путь к результату в формате "Stylish". */
+    private static final String STYLISH_RESULT =
+            "src/test/resources/fixtures/stylish-result.txt";
+    /** Путь к результату в формате "Plain". */
+    private static final String PLAIN_RESULT =
+            "src/test/resources/fixtures/plain-result.txt";
+    /** Путь к результату в формате "Json". */
+    private static final String JSON_RESULT =
+            "src/test/resources/fixtures/json-result.txt";
+
+
+
+    @DisplayName("Вывод сравнения JSON файлов без выбора формата")
     @Test
     void testFileDiffJson() throws Exception {
-        String p1 = "src/test/resources/fixtures/file1.json";
-        String p2 = "src/test/resources/fixtures/file2.json";
-
-        String actual = Differ.generate(p1, p2);
-        String expected = Differ.readFile(
-                "src/test/resources/fixtures/stylish-result.txt");
+        String actual = Differ.generate(JSON_FILE_1, JSON_FILE_2);
+        String expected = Differ.readFile(STYLISH_RESULT);
 
         assertEquals(expected, actual);
     }
 
-    @DisplayName("Вывод сравнения YML файлов")
+    @DisplayName("Вывод сравнения YML файлов без выбора формата")
     @Test
     void testFileDiffYml() throws Exception {
-        String p1 = "src/test/resources/fixtures/file1.yml";
-        String p2 = "src/test/resources/fixtures/file2.yml";
-
-        String actual = Differ.generate(p1, p2);
-        String expected = Differ.readFile(
-                "src/test/resources/fixtures/stylish-result.txt");
+        String actual = Differ.generate(YML_FILE_1, YML_FILE_2);
+        String expected = Differ.readFile(STYLISH_RESULT);
 
         assertEquals(expected, actual);
     }
 
-    @DisplayName("Вывод сравнения файлов в формате Stylish")
+    @DisplayName("Вывод сравнения JSON файлов в формате \"stylish\"")
     @Test
     void testFileDiffJsonWithStylish() throws Exception {
-        String p1 = "src/test/resources/fixtures/file1.json";
-        String p2 = "src/test/resources/fixtures/file2.json";
-
-        String actual = Differ.generate(p1, p2, "stylish");
-        String expected = Differ.readFile(
-                "src/test/resources/fixtures/stylish-result.txt");
+        String actual = Differ.generate(JSON_FILE_1, JSON_FILE_2, "stylish");
+        String expected = Differ.readFile(STYLISH_RESULT);
 
         assertEquals(expected, actual);
     }
 
-    @DisplayName("Вывод сравнения файлов в формате Plain")
+    @DisplayName("Вывод сравнения JSON файлов в формате \"plain\"")
     @Test
     void testFileDiffJsonWithPlain() throws Exception {
-        String p1 = "src/test/resources/fixtures/file1.json";
-        String p2 = "src/test/resources/fixtures/file2.json";
-
-        String actual = Differ.generate(p1, p2, "plain");
-        String expected = Differ.readFile(
-                "src/test/resources/fixtures/plain-result.txt");
+        String actual = Differ.generate(JSON_FILE_1, JSON_FILE_2, "plain");
+        String expected = Differ.readFile(PLAIN_RESULT);
 
         assertEquals(expected, actual);
     }
 
-    @DisplayName("Вывод сравнения файлов в формате Json")
+    @DisplayName("Вывод сравнения JSON файлов в формате \"json\"")
     @Test
     void testFileDiffJsonWithJson() throws Exception {
-        String p1 = "src/test/resources/fixtures/file1.yml";
-        String p2 = "src/test/resources/fixtures/file2.yml";
+        String actual = Differ.generate(JSON_FILE_1, JSON_FILE_2, "json");
+        String expected = Differ.readFile(JSON_RESULT);
 
-        String actual = Differ.generate(p1, p2, "json");
-        String expected = Differ.readFile(
-                "src/test/resources/fixtures/json-result.txt");
+        assertEquals(expected, actual);
+    }
+
+    @DisplayName("Вывод сравнения YML файлов в формате \"stylish\"")
+    @Test
+    void testFileDiffYmlWithStylish() throws Exception {
+        String actual = Differ.generate(YML_FILE_1, YML_FILE_2, "stylish");
+        String expected = Differ.readFile(STYLISH_RESULT);
+
+        assertEquals(expected, actual);
+    }
+
+    @DisplayName("Вывод сравнения YML файлов в формате \"plain\"")
+    @Test
+    void testFileDiffYmlWithPlain() throws Exception {
+        String actual = Differ.generate(YML_FILE_1, YML_FILE_2, "plain");
+        String expected = Differ.readFile(PLAIN_RESULT);
+
+        assertEquals(expected, actual);
+    }
+
+    @DisplayName("Вывод сравнения YML файлов в формате \"json\"")
+    @Test
+    void testFileDiffYmlWithJson() throws Exception {
+        String actual = Differ.generate(YML_FILE_1, YML_FILE_2, "json");
+        String expected = Differ.readFile(JSON_RESULT);
 
         assertEquals(expected, actual);
     }

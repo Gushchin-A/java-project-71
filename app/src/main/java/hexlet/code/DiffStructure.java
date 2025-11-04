@@ -4,6 +4,15 @@ package hexlet.code;
  * Класс с результатом diff: ключи, статусы, изменения.
  */
 public final class DiffStructure {
+    /** Статус сравнения «Добавлено новое». */
+    public static final String ADDED = "added";
+    /** Статус сравнения «Удалено». */
+    public static final String REMOVED = "removed";
+    /** Статус сравнения «Без изменений». */
+    public static final String UNCHANGED = "unchanged";
+    /** Статус сравнения «Обновлено». */
+    public static final String UPDATED = "updated";
+
     /** Ключ для сравнения файлов. */
     private final String key;
     /** Статус изменения. */

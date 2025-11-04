@@ -11,14 +11,6 @@ import java.util.TreeSet;
  * Класс для сравнения файлов и составление списка отличий.
  */
 public final class DiffBuilder {
-    /** Статус сравнения «Добавлено новое». */
-    public static final String ADDED = "added";
-    /** Статус сравнения «Удалено». */
-    public static final String REMOVED = "removed";
-    /** Статус сравнения «Без изменений». */
-    public static final String UNCHANGED = "unchanged";
-    /** Статус сравнения «Обновлено». */
-    public static final String UPDATED = "updated";
 
     private DiffBuilder() { }
 
@@ -45,14 +37,18 @@ public final class DiffBuilder {
 
             if (hasData1 && hasData2) {
                 if (Objects.equals(value1, value2)) {
-                    diff.add(new DiffStructure(key, UNCHANGED, value1, value2));
+                    diff.add(new DiffStructure(key,
+                            DiffStructure.UNCHANGED, value1, value2));
                 } else {
-                    diff.add(new DiffStructure(key, UPDATED, value1, value2));
+                    diff.add(new DiffStructure(key,
+                            DiffStructure.UPDATED, value1, value2));
                 }
             } else if (hasData1) {
-                diff.add(new DiffStructure(key, REMOVED, value1, null));
+                diff.add(new DiffStructure(key,
+                        DiffStructure.REMOVED, value1, null));
             } else {
-                diff.add(new DiffStructure(key, ADDED, null, value2));
+                diff.add(new DiffStructure(key,
+                        DiffStructure.ADDED, null, value2));
             }
         }
 
