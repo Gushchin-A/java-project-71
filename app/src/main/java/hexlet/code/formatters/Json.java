@@ -6,9 +6,7 @@ import hexlet.code.DiffStructure;
 
 import java.util.List;
 
-/**
- * Класс форматера "Json".
- */
+/** Класс форматера "Json". */
 public final class Json {
 
     private Json() { }

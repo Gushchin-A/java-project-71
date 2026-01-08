@@ -1,8 +1,6 @@
 package hexlet.code;
 
-/**
- * Класс с результатом diff: ключи, статусы, изменения.
- */
+/** Класс с результатом diff: ключи, статусы, изменения. */
 public final class DiffStructure {
     /** Статус сравнения «Добавлено новое». */
     public static final String ADDED = "added";

@@ -4,9 +4,7 @@ import hexlet.code.DiffStructure;
 
 import java.util.List;
 
-/**
- * Класс форматера "Stylish".
- */
+/** Класс форматера "Stylish". */
 public final class Stylish {
 
     private Stylish() { }

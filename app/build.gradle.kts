@@ -34,7 +34,7 @@ dependencies {
     implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.20.0")
 }
 
-sonar {
+sonarqube {
     properties {
         property("sonar.projectKey", "Gushchin-A_java-project-71")
         property("sonar.organization", "gushchin-a")

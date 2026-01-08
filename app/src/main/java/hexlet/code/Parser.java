@@ -5,9 +5,7 @@ import com.fasterxml.jackson.dataformat.yaml.YAMLMapper;
 
 import java.util.Map;
 
-/**
- * Класс для парсинга.
- */
+/** Класс для парсинга. */
 public final class Parser {
 
     private Parser() {

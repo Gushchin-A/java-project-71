@@ -7,9 +7,7 @@ import java.util.Objects;
 import java.util.Set;
 import java.util.TreeSet;
 
-/**
- * Класс для сравнения файлов и составление списка отличий.
- */
+/** Класс для сравнения файлов и составление списка отличий. */
 public final class DiffBuilder {
 
     private DiffBuilder() { }

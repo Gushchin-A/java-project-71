@@ -7,9 +7,7 @@ import java.nio.file.Path;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Класс с методами для генерации diff.
- */
+/** Класс с методами для генерации diff. */
 public final class Differ {
 
     private Differ() {

@@ -1,4 +1,2 @@
-/**
- * Основной пакет для gendiff.
- */
+/** Основной пакет для gendiff. */
 package hexlet.code;

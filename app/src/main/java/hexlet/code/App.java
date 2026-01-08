@@ -8,9 +8,7 @@ import picocli.CommandLine.Help;
 
 import java.util.concurrent.Callable;
 
-/**
- * Утилита gendiff. Сравнивает два файла.
- */
+/** Утилита gendiff. Сравнивает два файла. */
 @Command(
         name = "gendiff",
         mixinStandardHelpOptions = true,

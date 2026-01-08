@@ -5,9 +5,7 @@ import hexlet.code.DiffStructure;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Класс форматера "Plain".
- */
+/** Класс форматера "Plain". */
 public final class Plain {
 
     private Plain() { }

@@ -8,9 +8,7 @@ import static hexlet.code.formatters.Stylish.formatStylish;
 
 import java.util.List;
 
-/**
- * Класс для форматирования diff.
- */
+/** Класс для форматирования diff. */
 public final class Formatter {
     /** Стиль форматирования "Stylish". */
     public static final String STYLISH = "stylish";
